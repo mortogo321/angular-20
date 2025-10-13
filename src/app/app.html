@@ -1,0 +1,22 @@
+<div class="demo-container">
+  <header>
+    <h1>{{ title() }}</h1>
+    <p class="subtitle">Showcasing the latest Angular 20 features and improvements</p>
+  </header>
+
+  <nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/signals" routerLinkActive="active">Signals</a>
+    <a routerLink="/control-flow" routerLinkActive="active">Control Flow</a>
+    <a routerLink="/defer" routerLinkActive="active">Defer Loading</a>
+    <a routerLink="/signal-inputs" routerLinkActive="active">Signal Inputs</a>
+  </nav>
+
+  <main>
+    <router-outlet />
+  </main>
+
+  <footer>
+    <p>Built with Angular {{ angularVersion() }}</p>
+  </footer>
+</div>
