@@ -1,59 +1,48 @@
-# Angular20 Demo
+# Angular 20 Feature Demo
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
+A small Angular application demonstrating the key features introduced in Angular 20: signals, the built-in control-flow syntax, deferrable views, and signal-based component inputs.
 
-## Development server
+## What's inside
 
-To start a local development server, run:
+- Standalone-components app (no NgModules) with lazy-loaded routes per feature
+- **Signals** — reactive state demo (`/signals`)
+- **Control Flow** — `@if` / `@for` / `@switch` syntax demo (`/control-flow`)
+- **Defer** — `@defer` block for declarative lazy loading (`/defer`)
+- **Signal Inputs** — `input()` / `output()` component APIs (`/signal-inputs`)
+
+## Tech stack
+
+- Angular 20 (standalone components, signals, new control flow)
+- TypeScript
+- Karma/Jasmine for unit tests
+
+## Quickstart
 
 ```bash
+git clone git@github.com:mortogo321/angular-20.git
+cd angular-20
+pnpm install   # or: bun install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open http://localhost:4200.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Other commands
 
 ```bash
-ng generate component component-name
+ng build    # production build to dist/
+ng test     # unit tests via Karma
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Structure
 
-```bash
-ng generate --help
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
+src/app/
+├── app.ts / app.routes.ts   # Root component and route table
+└── pages/
+    ├── home/                # Landing page with links to each demo
+    ├── signals/
+    ├── control-flow/
+    ├── defer/
+    └── signal-inputs/
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
