@@ -34,7 +34,7 @@ COPY . .
 RUN bun run build
 
 # Stage: production — serve the static bundle with nginx.
-FROM nginx:1.29-alpine AS production
+FROM nginx:1.31-alpine AS production
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/angular20-demo/browser /usr/share/nginx/html
