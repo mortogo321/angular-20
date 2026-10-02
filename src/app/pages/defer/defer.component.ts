@@ -8,54 +8,71 @@ import { Component, signal } from '@angular/core';
       <h4>🎉 Heavy Component Loaded!</h4>
       <p>This component was deferred and loaded on demand.</p>
       <div class="loading-animation">
-        @for (item of [1,2,3,4,5]; track item) {
+        @for (item of [1, 2, 3, 4, 5]; track item) {
           <div class="loading-box"></div>
         }
       </div>
     </div>
   `,
-  styles: [`
-    .heavy-component {
-      background: #d4edda;
-      border: 2px solid #28a745;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-    }
+  styles: [
+    `
+      .heavy-component {
+        background: #d4edda;
+        border: 2px solid #28a745;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+      }
 
-    .heavy-component h4 {
-      margin: 0 0 0.5rem 0;
-      color: #155724;
-    }
+      .heavy-component h4 {
+        margin: 0 0 0.5rem 0;
+        color: #155724;
+      }
 
-    .heavy-component p {
-      margin: 0 0 1rem 0;
-      color: #155724;
-    }
+      .heavy-component p {
+        margin: 0 0 1rem 0;
+        color: #155724;
+      }
 
-    .loading-animation {
-      display: flex;
-      gap: 0.5rem;
-    }
+      .loading-animation {
+        display: flex;
+        gap: 0.5rem;
+      }
 
-    .loading-box {
-      width: 40px;
-      height: 40px;
-      background: #28a745;
-      border-radius: 4px;
-      animation: pulse 1.5s ease-in-out infinite;
-    }
+      .loading-box {
+        width: 40px;
+        height: 40px;
+        background: #28a745;
+        border-radius: 4px;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
 
-    .loading-box:nth-child(2) { animation-delay: 0.1s; }
-    .loading-box:nth-child(3) { animation-delay: 0.2s; }
-    .loading-box:nth-child(4) { animation-delay: 0.3s; }
-    .loading-box:nth-child(5) { animation-delay: 0.4s; }
+      .loading-box:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .loading-box:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .loading-box:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .loading-box:nth-child(5) {
+        animation-delay: 0.4s;
+      }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.7; }
-    }
-  `]
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.7;
+        }
+      }
+    `,
+  ],
 })
 export class HeavyComponent {}
 
@@ -67,7 +84,8 @@ export class HeavyComponent {}
       <h2>Defer Loading - Optimize Performance</h2>
       <p class="description">
         at-defer allows you to declaratively lazy load components and reduce initial bundle size.
-        Components are loaded on demand based on triggers like viewport visibility, interaction, or timers.
+        Components are loaded on demand based on triggers like viewport visibility, interaction, or
+        timers.
       </p>
 
       <div class="demo-grid">
@@ -76,9 +94,7 @@ export class HeavyComponent {}
           <h3>👆 Defer on Interaction</h3>
           <div class="demo-content">
             <p>Click the button to load the component:</p>
-            <button (click)="showInteraction.set(true)">
-              Load Component
-            </button>
+            <button (click)="showInteraction.set(true)">Load Component</button>
 
             @if (showInteraction()) {
               @defer (on interaction) {
@@ -231,12 +247,8 @@ export class HeavyComponent {}
           <h3>🎨 Heavy Component Example</h3>
           <div class="demo-content">
             <div class="button-group">
-              <button (click)="loadHeavy.set(true)">
-                Load Heavy Component
-              </button>
-              <button (click)="loadHeavy.set(false)">
-                Unload
-              </button>
+              <button (click)="loadHeavy.set(true)">Load Heavy Component</button>
+              <button (click)="loadHeavy.set(false)">Unload</button>
             </div>
 
             @if (loadHeavy()) {
@@ -304,239 +316,249 @@ export class HeavyComponent {}
       </div>
     </div>
   `,
-  styles: [`
-    .defer-container {
-      animation: fadeIn 0.5s ease-in;
-    }
+  styles: [
+    `
+      .defer-container {
+        animation: fadeIn 0.5s ease-in;
+      }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-    h2 {
-      font-size: 2rem;
-      color: #212529;
-      margin-bottom: 0.5rem;
-    }
+      h2 {
+        font-size: 2rem;
+        color: #212529;
+        margin-bottom: 0.5rem;
+      }
 
-    .description {
-      font-size: 1.1rem;
-      color: #6c757d;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
+      .description {
+        font-size: 1.1rem;
+        color: #6c757d;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
 
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .demo-card {
-      background: white;
-      border: 2px solid #e9ecef;
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .demo-card.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .demo-card h3 {
-      margin: 0 0 1rem 0;
-      color: #212529;
-      font-size: 1.3rem;
-    }
-
-    .demo-content {
-      flex: 1;
-      margin-bottom: 1rem;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 0.5rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      background: #667eea;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #5568d3;
-    }
-
-    .deferred-content {
-      background: #d4edda;
-      border: 2px solid #28a745;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    .deferred-content p {
-      margin: 0.5rem 0;
-      color: #155724;
-    }
-
-    .placeholder {
-      background: #fff3cd;
-      border: 2px dashed #ffc107;
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
-      margin: 1rem 0;
-    }
-
-    .placeholder p {
-      margin: 0;
-      color: #856404;
-      font-weight: 500;
-    }
-
-    .loading {
-      background: #d1ecf1;
-      border: 2px solid #17a2b8;
-      padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      margin: 1rem 0;
-    }
-
-    .loading p {
-      margin: 0;
-      color: #0c5460;
-      font-weight: 500;
-    }
-
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #17a2b8;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .error {
-      background: #f8d7da;
-      border: 2px solid #dc3545;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-      text-align: center;
-    }
-
-    .error p {
-      margin: 0;
-      color: #721c24;
-      font-weight: 500;
-    }
-
-    .scroll-space {
-      height: 150px;
-      background: #f8f9fa;
-      border: 2px dashed #dee2e6;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1rem 0;
-    }
-
-    .scroll-space p {
-      color: #6c757d;
-      font-weight: 500;
-      font-size: 1.2rem;
-    }
-
-    .hover-trigger {
-      min-height: 100px;
-      cursor: pointer;
-    }
-
-    .viewport-placeholder {
-      min-height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .code-section {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 1rem;
-      overflow-x: auto;
-    }
-
-    .code-section pre {
-      margin: 0;
-      font-size: 0.9rem;
-    }
-
-    .code-section code {
-      color: #495057;
-      font-family: 'Monaco', 'Courier New', monospace;
-    }
-
-    .info {
-      color: #6c757d;
-      font-size: 0.9rem;
-      font-style: italic;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .benefit-item {
-      padding: 1rem;
-      background: #f8f9fa;
-      border-radius: 8px;
-    }
-
-    .benefit-item strong {
-      color: #212529;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .benefit-item p {
-      color: #6c757d;
-      margin: 0;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 768px) {
       .demo-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .demo-card {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .demo-card.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .demo-card h3 {
+        margin: 0 0 1rem 0;
+        color: #212529;
+        font-size: 1.3rem;
+      }
+
+      .demo-content {
+        flex: 1;
+        margin-bottom: 1rem;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 0.5rem;
+        margin: 1rem 0;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background: #5568d3;
+      }
+
+      .deferred-content {
+        background: #d4edda;
+        border: 2px solid #28a745;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
+
+      .deferred-content p {
+        margin: 0.5rem 0;
+        color: #155724;
+      }
+
+      .placeholder {
+        background: #fff3cd;
+        border: 2px dashed #ffc107;
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      .placeholder p {
+        margin: 0;
+        color: #856404;
+        font-weight: 500;
+      }
+
+      .loading {
+        background: #d1ecf1;
+        border: 2px solid #17a2b8;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      .loading p {
+        margin: 0;
+        color: #0c5460;
+        font-weight: 500;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #17a2b8;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .error {
+        background: #f8d7da;
+        border: 2px solid #dc3545;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        text-align: center;
+      }
+
+      .error p {
+        margin: 0;
+        color: #721c24;
+        font-weight: 500;
+      }
+
+      .scroll-space {
+        height: 150px;
+        background: #f8f9fa;
+        border: 2px dashed #dee2e6;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+      }
+
+      .scroll-space p {
+        color: #6c757d;
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+
+      .hover-trigger {
+        min-height: 100px;
+        cursor: pointer;
+      }
+
+      .viewport-placeholder {
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .code-section {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      .code-section pre {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .code-section code {
+        color: #495057;
+        font-family: 'Monaco', 'Courier New', monospace;
+      }
+
+      .info {
+        color: #6c757d;
+        font-size: 0.9rem;
+        font-style: italic;
       }
 
       .benefits-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
       }
-    }
-  `]
+
+      .benefit-item {
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .benefit-item strong {
+        color: #212529;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .benefit-item p {
+        color: #6c757d;
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 768px) {
+        .demo-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    `,
+  ],
 })
 export class DeferComponent {
   showInteraction = signal(false);

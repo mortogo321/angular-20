@@ -30,19 +30,13 @@ interface User {
             </div>
 
             @if (isLoggedIn()) {
-              <div class="message success">
-                ✅ Welcome back! You are logged in.
-              </div>
+              <div class="message success">✅ Welcome back! You are logged in.</div>
             } @else {
-              <div class="message warning">
-                ⚠️ Please log in to continue.
-              </div>
+              <div class="message warning">⚠️ Please log in to continue.</div>
             }
 
             @if (isLoggedIn() && isAdmin()) {
-              <div class="message info">
-                🔑 Admin panel is available!
-              </div>
+              <div class="message info">🔑 Admin panel is available!</div>
             }
           </div>
           <div class="code-section">
@@ -174,9 +168,7 @@ at-if (isLoggedIn() && isAdmin()) &#123;
                   }
                 </div>
               } @else {
-                <div class="message warning">
-                  Please login to view user status
-                </div>
+                <div class="message warning">Please login to view user status</div>
               }
             </div>
           </div>
@@ -229,282 +221,290 @@ at-if (isLoggedIn() && isAdmin()) &#123;
       </div>
     </div>
   `,
-  styles: [`
-    .control-flow-container {
-      animation: fadeIn 0.5s ease-in;
-    }
+  styles: [
+    `
+      .control-flow-container {
+        animation: fadeIn 0.5s ease-in;
+      }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-    h2 {
-      font-size: 2rem;
-      color: #212529;
-      margin-bottom: 0.5rem;
-    }
+      h2 {
+        font-size: 2rem;
+        color: #212529;
+        margin-bottom: 0.5rem;
+      }
 
-    .description {
-      font-size: 1.1rem;
-      color: #6c757d;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
+      .description {
+        font-size: 1.1rem;
+        color: #6c757d;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
 
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .demo-card {
-      background: white;
-      border: 2px solid #e9ecef;
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .demo-card.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .demo-card h3 {
-      margin: 0 0 1rem 0;
-      color: #212529;
-      font-size: 1.3rem;
-    }
-
-    .demo-content {
-      flex: 1;
-      margin-bottom: 1rem;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      background: #667eea;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #5568d3;
-    }
-
-    .small-btn {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.9rem;
-      background: #dc3545;
-    }
-
-    .small-btn:hover {
-      background: #c82333;
-    }
-
-    .message {
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 0.5rem 0;
-      font-weight: 500;
-    }
-
-    .message.success {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-    }
-
-    .message.warning {
-      background: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffeaa7;
-    }
-
-    .message.info {
-      background: #d1ecf1;
-      color: #0c5460;
-      border: 1px solid #bee5eb;
-    }
-
-    .user-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin: 1rem 0;
-    }
-
-    .user-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem;
-      background: #f8f9fa;
-      border-radius: 6px;
-    }
-
-    .user-item strong {
-      flex: 1;
-    }
-
-    .badge {
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .badge.admin {
-      background: #ffd43b;
-      color: #000;
-    }
-
-    .badge.user {
-      background: #667eea;
-      color: white;
-    }
-
-    .badge.guest {
-      background: #6c757d;
-      color: white;
-    }
-
-    .theme-display {
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-
-    .theme-display h4 {
-      margin: 0 0 0.5rem 0;
-    }
-
-    .theme-display.light {
-      background: #fff;
-      border: 2px solid #ffd43b;
-      color: #000;
-    }
-
-    .theme-display.dark {
-      background: #212529;
-      border: 2px solid #495057;
-      color: #fff;
-    }
-
-    .theme-display.auto {
-      background: linear-gradient(to right, #fff 50%, #212529 50%);
-      border: 2px solid #667eea;
-      color: #667eea;
-    }
-
-    .theme-display.custom {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: 2px solid #764ba2;
-      color: white;
-    }
-
-    .status-grid {
-      margin-top: 1rem;
-    }
-
-    .status-card {
-      background: #f8f9fa;
-      padding: 1rem;
-      border-radius: 8px;
-    }
-
-    .status-card h4 {
-      margin: 0 0 1rem 0;
-      color: #212529;
-    }
-
-    .nested-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem;
-      background: white;
-      border-radius: 6px;
-      margin-bottom: 0.5rem;
-    }
-
-    .empty-state {
-      text-align: center;
-      color: #6c757d;
-      padding: 1.5rem;
-      font-style: italic;
-    }
-
-    .code-section {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 1rem;
-      overflow-x: auto;
-    }
-
-    .code-section pre {
-      margin: 0;
-      font-size: 0.9rem;
-    }
-
-    .code-section code {
-      color: #495057;
-      font-family: 'Monaco', 'Courier New', monospace;
-    }
-
-    .info {
-      color: #6c757d;
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .benefit-item {
-      padding: 1rem;
-      background: #f8f9fa;
-      border-radius: 8px;
-    }
-
-    .benefit-item strong {
-      color: #212529;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .benefit-item p {
-      color: #6c757d;
-      margin: 0;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 768px) {
       .demo-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .demo-card {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .demo-card.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .demo-card h3 {
+        margin: 0 0 1rem 0;
+        color: #212529;
+        font-size: 1.3rem;
+      }
+
+      .demo-content {
+        flex: 1;
+        margin-bottom: 1rem;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background: #5568d3;
+      }
+
+      .small-btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.9rem;
+        background: #dc3545;
+      }
+
+      .small-btn:hover {
+        background: #c82333;
+      }
+
+      .message {
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 0.5rem 0;
+        font-weight: 500;
+      }
+
+      .message.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .message.warning {
+        background: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeaa7;
+      }
+
+      .message.info {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+      }
+
+      .user-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .user-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        background: #f8f9fa;
+        border-radius: 6px;
+      }
+
+      .user-item strong {
+        flex: 1;
+      }
+
+      .badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .badge.admin {
+        background: #ffd43b;
+        color: #000;
+      }
+
+      .badge.user {
+        background: #667eea;
+        color: white;
+      }
+
+      .badge.guest {
+        background: #6c757d;
+        color: white;
+      }
+
+      .theme-display {
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+
+      .theme-display h4 {
+        margin: 0 0 0.5rem 0;
+      }
+
+      .theme-display.light {
+        background: #fff;
+        border: 2px solid #ffd43b;
+        color: #000;
+      }
+
+      .theme-display.dark {
+        background: #212529;
+        border: 2px solid #495057;
+        color: #fff;
+      }
+
+      .theme-display.auto {
+        background: linear-gradient(to right, #fff 50%, #212529 50%);
+        border: 2px solid #667eea;
+        color: #667eea;
+      }
+
+      .theme-display.custom {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: 2px solid #764ba2;
+        color: white;
+      }
+
+      .status-grid {
+        margin-top: 1rem;
+      }
+
+      .status-card {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .status-card h4 {
+        margin: 0 0 1rem 0;
+        color: #212529;
+      }
+
+      .nested-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem;
+        background: white;
+        border-radius: 6px;
+        margin-bottom: 0.5rem;
+      }
+
+      .empty-state {
+        text-align: center;
+        color: #6c757d;
+        padding: 1.5rem;
+        font-style: italic;
+      }
+
+      .code-section {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      .code-section pre {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .code-section code {
+        color: #495057;
+        font-family: 'Monaco', 'Courier New', monospace;
+      }
+
+      .info {
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
       }
 
       .benefits-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
       }
-    }
-  `]
+
+      .benefit-item {
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .benefit-item strong {
+        color: #212529;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .benefit-item p {
+        color: #6c757d;
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 768px) {
+        .demo-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    `,
+  ],
 })
 export class ControlFlowComponent {
   isLoggedIn = signal(false);
@@ -514,13 +514,13 @@ export class ControlFlowComponent {
   users = signal<User[]>([
     { id: 1, name: 'Alice Admin', role: 'admin', email: 'alice@example.com' },
     { id: 2, name: 'Bob User', role: 'user', email: 'bob@example.com' },
-    { id: 3, name: 'Charlie Guest', role: 'guest', email: 'charlie@example.com' }
+    { id: 3, name: 'Charlie Guest', role: 'guest', email: 'charlie@example.com' },
   ]);
 
   private userIdCounter = 4;
 
   toggleLogin() {
-    this.isLoggedIn.update(v => !v);
+    this.isLoggedIn.update((v) => !v);
   }
 
   setTheme(theme: 'light' | 'dark' | 'auto' | 'custom') {
@@ -529,18 +529,21 @@ export class ControlFlowComponent {
 
   addUser() {
     const roles: ('admin' | 'user' | 'guest')[] = ['admin', 'user', 'guest'];
-    const randomRole = roles[Math.floor(Math.random() * roles.length)];
+    const randomRole = roles[Math.floor(Math.random() * roles.length)] ?? 'user';
 
-    this.users.update(users => [...users, {
-      id: this.userIdCounter++,
-      name: `User ${this.userIdCounter}`,
-      role: randomRole,
-      email: `user${this.userIdCounter}@example.com`
-    }]);
+    this.users.update((users) => [
+      ...users,
+      {
+        id: this.userIdCounter++,
+        name: `User ${this.userIdCounter}`,
+        role: randomRole,
+        email: `user${this.userIdCounter}@example.com`,
+      },
+    ]);
   }
 
   removeUser(id: number) {
-    this.users.update(users => users.filter(u => u.id !== id));
+    this.users.update((users) => users.filter((u) => u.id !== id));
   }
 
   clearUsers() {
