@@ -4,7 +4,7 @@
 # bun is the package manager, but `ng` must run on real Node (the Angular CLI
 # rejects bun's emulated Node version), so we install on node:26-alpine with
 # the bun binary copied in.
-FROM node:26.10-alpine AS development
+FROM node:26.11-alpine AS development
 COPY --from=oven/bun:1.4.2-alpine /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
@@ -22,7 +22,7 @@ HEALTHCHECK --interval=15s --timeout=3s --start-period=20s --retries=3 \
 CMD ["bun", "run", "start", "--", "--host", "0.0.0.0", "--port", "4200"]
 
 # Stage: build the Angular production bundle with bun-installed deps.
-FROM node:26.10-alpine AS build
+FROM node:26.11-alpine AS build
 COPY --from=oven/bun:1.4.2-alpine /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
